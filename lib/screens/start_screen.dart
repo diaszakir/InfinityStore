@@ -14,13 +14,34 @@ class StartScreen extends StatelessWidget{
           const Text("Welcome to InfinityStore!"),
           const SizedBox(height: 30),
           ElevatedButton(
+            onPressed: () {}, 
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color.fromARGB(248, 255, 245, 245),
+              foregroundColor: Color.fromARGB(255, 198, 99, 6)
+            ),
+            child: const Text(
+              "Login"
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {}, 
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color.fromARGB(248, 255, 245, 245),
+              foregroundColor: Color.fromARGB(255, 198, 99, 6)
+            ),
+            child: const Text(
+              "Register"
+            ),
+          ),
+          // delete after implementation login and register
+          ElevatedButton(
             onPressed: startApp, 
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromARGB(248, 255, 245, 245),
               foregroundColor: Color.fromARGB(255, 198, 99, 6)
             ),
             child: const Text(
-              "Test Btn"
+              "Continue" 
             ),
           )
         ],
