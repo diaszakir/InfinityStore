@@ -12,6 +12,8 @@ class ProfileScreen extends StatefulWidget{
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  static const keyLanguage = 'key-language';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SettingsGroup(
               title: 'GENERAL',
               children: <Widget>[
+                buildLanguage(),
+                const SizedBox(height: 8),
                 AccountPage(),
+                const SizedBox(height: 8),
+                buildPaymentInfo(),
                 const SizedBox(height: 8),
                 buildLogout(),
                 const SizedBox(height: 8),
@@ -47,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       );
     }
 
-    Widget buildDeleteAccount() {
+  Widget buildDeleteAccount() {
       return SimpleSettingsTile(
         title: 'Delete Account',
         subtitle: '',
@@ -55,4 +61,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
         onTap: () => {},
       );
     }
+
+  Widget buildLanguage() {
+    return DropDownSettingsTile(
+      title: "Language", 
+      settingKey: keyLanguage, 
+      selected: 1, 
+      values: <int, String>{
+        1: "English",
+        2: "Russian",
+        3: "Kazakh"
+      },
+      // TODO: Add change language
+      // onChange: () {},
+    );
+  }
+
+  Widget buildPaymentInfo() {
+    return SimpleSettingsTile(
+      title: "Payment Info",
+      subtitle: '',
+      leading: IconWidget(color: Colors.purple, icon: Icons.payment)
+    );
+  }
 }

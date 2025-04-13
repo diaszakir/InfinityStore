@@ -2,69 +2,75 @@ import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:infinitystore/components/icon_widget.dart';
 
-class AccountPage extends StatelessWidget{
+class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
-
-  static const keyLanguage = 'key-language';
 
   @override
   Widget build(BuildContext context) {
     return SimpleSettingsTile(
-      title: 'Account Settings',
-      subtitle: 'Privacy, Security, Language',
+      title: 'Account Information',
+      subtitle: '',
       leading: IconWidget(color: Colors.greenAccent, icon: Icons.person),
       child: SettingsScreen(
         title: 'Account Settings',
         children: <Widget>[
-          const SizedBox(height: 8),
-          buildLanguage(),
-          const SizedBox(height: 8),
-          buildPrivacy(context),
-          const SizedBox(height: 8),
-          buildSecurity(context),
-          const SizedBox(height: 8),
-          buildAccountInfo(context),
+          Container(
+            alignment: Alignment.center, 
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 40,
+                  backgroundImage: AssetImage('assets/avatar/avatar_1.png'),
+                ),
+                SizedBox(height: 20),
+
+                Text("Name", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                SizedBox(height: 10),
+                Text("Name should be imported from db"),
+
+                SizedBox(height: 20),
+                Text("Surname", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                SizedBox(height: 10),
+                Text("Surname should be imported from db"),
+
+                SizedBox(height: 20),
+                Text("Birth Date", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                SizedBox(height: 10),
+                Text("Birth Date should be imported from db"),
+
+                SizedBox(height: 20),
+                Text("Email", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                SizedBox(height: 10),
+                Text("Email should be imported from db"),
+
+                SizedBox(height: 20),
+                Text("Registration Date", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                SizedBox(height: 10),
+                Text("Registration Date should be imported from db"),
+
+                SizedBox(height: 20),
+                Text("City", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                SizedBox(height: 10),
+                Text("City should be imported from db"),
+
+                SizedBox(height: 20),
+                Text("Address", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                SizedBox(height: 10),
+                Text("Address should be imported from db"),
+
+                SizedBox(height: 20),
+                ElevatedButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.edit), 
+                  label: Text("Edit profile")
+                )
+              ],
+            ),
+          ),
         ],
       ),
-    );
-  }
-
-  Widget buildLanguage() {
-    return DropDownSettingsTile(
-      title: "Language", 
-      settingKey: keyLanguage, 
-      selected: 1, 
-      values: <int, String>{
-        1: "English",
-        2: "Russian",
-        3: "Kazakh"
-      },
-      // TODO: Add change language
-      // onChange: () {},
-    );
-  }
-
-  Widget buildPrivacy(BuildContext context) {
-    return SimpleSettingsTile(
-      title: "Privacy",
-      subtitle: '',
-      leading: IconWidget(color: Colors.blue, icon: Icons.lock)
-    );
-  }
-
-  Widget buildSecurity(BuildContext context) {
-    return SimpleSettingsTile(
-      title: "Security",
-      subtitle: '',
-      leading: IconWidget(color: Colors.red, icon: Icons.security)
-    );
-  } 
-
-  Widget buildAccountInfo(BuildContext context) {
-    return SimpleSettingsTile(
-      title: "Payment Info",
-      subtitle: '',
-      leading: IconWidget(color: Colors.purple, icon: Icons.payment)
     );
   }
 }
